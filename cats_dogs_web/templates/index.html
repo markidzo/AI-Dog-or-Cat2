@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cats vs Dogs Predictor</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(177, 177, 177);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+    font-family: Roboto;
+}
+
+h1{
+    font-size: 40px;
+}
+
+.download{
+    margin-top: 50px;
+    background-color: rgb(150, 150, 150);
+    border-radius: 20px;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.download button{
+    color: white;
+    background-color: black;
+    border: none;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    transition: 0.6s;
+}
+
+.download button:hover{
+    width: 110px;
+    height: 60px;
+    transition: 0.6s;
+
+}
+
+
+</style>
+<body>
+  <h1>Завантаж фото, щоб дізнатися кіт чи собака</h1>
+  <h2></h2>
+  <form method="POST" enctype="multipart/form-data" class="download">
+    <input type="file" name="file" required>
+    <button type="submit">Відправити</button>
+  </form>
+
+  {% if result %}
+    <h2>Результат:</h2>
+    <p>{{ result }}</p>
+    <p><strong>Підсумок:</strong> {{ label }}</p>
+    <img src="{{ url_for('uploaded_file', filename=filename) }}" width="300">
+  {% endif %}
+</body>
+</html>
